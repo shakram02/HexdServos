@@ -9,8 +9,7 @@
 #include "HexdServos.hpp"
 
 HexdServos::HexdServos(int rx, int tx, int baud_rate)
-    : servoSerial(rx, tx), baud_rate(baud_rate) {
-}
+    : servoSerial(rx, tx), baud_rate(baud_rate) {}
 
 void HexdServos::begin() { servoSerial.begin(baud_rate); }
 
@@ -28,6 +27,12 @@ void HexdServos::write(int servoNumber, int degree, int speed) {
   String servoLoc = String(mapAngle(degree));
   String servoSpeed = String(mapSpeed(speed));
 
+  // Message format is specified by the datasheet
+  // Format: # <ch> P <pw> ... # <ch> P <pw> T <time> \ n \ r
+  // <ch> = Servo number, range 1~32 (decimal number)
+  // <pw> = Pulse width (servo position), range: 500~2500. Unit: us
+  // (microseconds) <time> = Time used to move to the position, effective for
+  // all servos.
   String msg = String("#") + servoNum + String("P") + servoLoc + String("T") +
                servoSpeed + String("\r\n");
 
@@ -50,4 +55,4 @@ long HexdServos::map(long x, long inMin, long inMax, long outMin, long outMax) {
   return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
-HexdServos::~HexdServos() {}
+HexdServos::~HexdServos() { servoSerial.end(); }
