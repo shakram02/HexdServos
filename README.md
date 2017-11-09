@@ -8,6 +8,8 @@ Arduino library for 16/32 servo controller. The communication with the MCU on th
 
 ## Usage
 
+For easy usage, add the library using `Arduino` text editor (a.k.a IDE) from `Sketch->Include Library->Add .ZIP Library...`
+
 - Create a HexdServos object
 - Write the data to `servoNumber` giving it an `angle` and optionally a `speed`
 - Angles range from `0~180`
