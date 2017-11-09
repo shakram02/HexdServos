@@ -1,4 +1,4 @@
-#include <HexdServos.hpp>
+#include <HexdServos.h>
 #include <Arduino.h>
 
 const int rxPin = 10;
