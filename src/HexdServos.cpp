@@ -1,17 +1,17 @@
 //
-//  HexdServos.cpp
+//  HexdServos.hpp
 //  hexapod_servos
 //
 //  Created by Ahmed Hamdy (shakram02) on 09/11/2017.
-//
+//  Abstracts a 16/24 servo controller
 //
 
-#include "HexdServos.hpp"
+#include "HexdServos.h"
 
 HexdServos::HexdServos(int rx, int tx, int baud_rate)
-    : servoSerial(rx, tx), baud_rate(baud_rate) {}
+    : _servoSerial(rx, tx), _baud_rate(baud_rate) {}
 
-void HexdServos::begin() { servoSerial.begin(baud_rate); }
+void HexdServos::begin() { _servoSerial.begin(_baud_rate); }
 
 void HexdServos::servoWrite(int servoNum, int degree, int speedRate) {
   write(servoNum, degree, speedRate);
@@ -36,7 +36,7 @@ void HexdServos::write(int servoNumber, int degree, int speed) {
   String msg = String("#") + servoNum + String("P") + servoLoc + String("T") +
                servoSpeed + String("\r\n");
 
-  servoSerial.print(msg);
+  _servoSerial.print(msg);
 }
 
 long HexdServos::mapAngle(long x) {
@@ -55,4 +55,4 @@ long HexdServos::map(long x, long inMin, long inMax, long outMin, long outMax) {
   return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
-HexdServos::~HexdServos() { servoSerial.end(); }
+HexdServos::~HexdServos() { _servoSerial.end(); }
