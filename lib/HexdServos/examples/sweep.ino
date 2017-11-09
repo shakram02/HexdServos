@@ -1,19 +1,3 @@
-#HexadServos
-
-Arduino library for 16/32 servo controller. The communication with the MCU on the controller is done using a software serial
-
-** References are in the `attachements` folder **
-
-![](attachments/controller_image.png)
-
-## Usage
-
-- Create a HexdServos object
-- Write the data to `servoNumber` giving it an `angle` and optionally a `speed`
-- Angles range from `0~180`
-- Speeds range from `0~100`
-
-```Arduino
 #include "HexdServos.hpp"
 #include <Arduino.h>
 
@@ -41,4 +25,3 @@ void loop() {
     delay(servoDelay);
   }
 }
-```
