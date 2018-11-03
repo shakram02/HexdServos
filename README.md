@@ -1,4 +1,4 @@
-#HexadServos
+# HexdServos
 
 Arduino library for 16/32 servo controller. The communication with the MCU on the controller is done using a software serial
 
