@@ -1,6 +1,6 @@
 # HexdServos
 
-Arduino library for 16/32 servo controller. The communication with the MCU on the controller is done using a software serial
+C++ driver for 16/32 servo controller. The communication with the MCU on the controller is done using a software serial
 
 ** References are in the `attachements` folder **
 
@@ -15,7 +15,7 @@ For easy usage, add the library using `Arduino` text editor (a.k.a IDE) from `Sk
 - Angles range from `0~180`
 - Speeds range from `0~100`
 
-```Arduino
+```cpp
 #include "HexdServos.hpp"
 #include <Arduino.h>
 
